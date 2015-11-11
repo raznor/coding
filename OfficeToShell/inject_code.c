@@ -9,8 +9,6 @@ int main(int argc, char* argv[]) {
 	FILE* fin_code = fopen(argv[2], "r");
 	FILE* fout = fopen(argv[3], "w");
 	
-	printf("opened files\n");
-
 	//size of fin
 	fseek(fin,0,SEEK_END);
 	int fsize = ftell(fin);
@@ -37,10 +35,8 @@ int main(int argc, char* argv[]) {
 			buffout[count] = buffin[count];
 		} else {
 			buffout[count] = buffin_code[count-ZIP_HEADER_OFFSET];
-			printf("%c",buffin_code[count-ZIP_HEADER_OFFSET]);
 		}
 	}
-	printf("\n");
 
 	//write buffout to file fout
 	fwrite(buffout, 1, fsize, fout);
